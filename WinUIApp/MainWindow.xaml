@@ -1,14 +1,40 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8" ?>
 <Window
     x:Class="WinUIApp.MainWindow"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="using:WinUIApp"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="using:WinUIApp"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Title="WinUI App"
     mc:Ignorable="d">
 
-    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
-        <Button x:Name="myButton" Click="myButton_Click">Click Me</Button>
-    </StackPanel>
+    <Grid>
+        <StackPanel
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            Orientation="Vertical">
+            <StackPanel
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                Orientation="Horizontal">
+                <TextBlock FontSize="36" Text="WinUI App" />
+                <TextBlock FontSize="9" Text="v0.0.1" />
+            </StackPanel>
+            <TextBox
+                Width="300"
+                Margin="3"
+                Text="root" />
+            <PasswordBox
+                Width="300"
+                Margin="3"
+                Password="12345678" />
+            <CheckBox
+                x:Name="termsOfServiceChheckBox"
+                HorizontalAlignment="Center"
+                Content="I agree to the terms of service."
+                IsChecked="False" />
+            <Button HorizontalAlignment="Center" Content="Submit" />
+        </StackPanel>
+    </Grid>
 </Window>
