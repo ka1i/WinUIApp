@@ -6,35 +6,65 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="using:WinUIApp"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    Title="WinUI App"
+    SizeChanged="WindowSizeChanged"
     mc:Ignorable="d">
-
     <Grid>
-        <StackPanel
-            HorizontalAlignment="Center"
-            VerticalAlignment="Center"
-            Orientation="Vertical">
-            <StackPanel
-                HorizontalAlignment="Center"
+        <Grid.RowDefinitions>
+            <RowDefinition Height="32" />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+
+        <StackPanel x:Name="AppTitleBar" Orientation="Horizontal">
+            <Image
+                Width="16"
+                Height="16"
+                Margin="6,0"
+                HorizontalAlignment="Left"
+                Source="Assets/WindowIcon.png" />
+            <TextBlock
+                x:Name="AppTitleTextBlock"
+                Margin="3,0,0,0"
                 VerticalAlignment="Center"
-                Orientation="Horizontal">
-                <TextBlock FontSize="36" Text="WinUI App" />
-                <TextBlock FontSize="9" Text="v0.0.1" />
-            </StackPanel>
-            <TextBox
-                Width="300"
-                Margin="3"
-                Text="root" />
-            <PasswordBox
-                Width="300"
-                Margin="3"
-                Password="12345678" />
-            <CheckBox
-                x:Name="termsOfServiceChheckBox"
-                HorizontalAlignment="Center"
-                Content="I agree to the terms of service."
-                IsChecked="False" />
-            <Button HorizontalAlignment="Center" Content="Submit" />
+                Style="{StaticResource CaptionTextBlockStyle}"
+                Text="App title"
+                TextWrapping="NoWrap" />
+            <TextBlock
+                x:Name="AppVersionTextBlock"
+                Margin="6,0,0,6"
+                VerticalAlignment="Center"
+                FontFamily="Comic Neue"
+                FontSize="10"
+                FontStyle="Italic"
+                Style="{StaticResource CaptionTextBlockStyle}"
+                TextWrapping="NoWrap" />
+            <TextBlock
+                x:Name="AppResolutionTextBlock"
+                Margin="30,0,0,0"
+                VerticalAlignment="Center"
+                FontFamily="Comic Neue"
+                FontStyle="Italic"
+                Style="{StaticResource CaptionTextBlockStyle}"
+                TextWrapping="NoWrap" />
         </StackPanel>
+
+        <NavigationView
+            x:Name="AppNavigationView"
+            Grid.Row="1"
+            IsBackButtonVisible="Collapsed"
+            IsSettingsVisible="True"
+            PaneDisplayMode="Auto">
+            <NavigationView.MenuItems>
+                <NavigationViewItem
+                    x:Name="AllApps"
+                    Content="All Apps"
+                    Icon="AllApps" />
+            </NavigationView.MenuItems>
+            <StackPanel>
+                <TextBlock
+                    Margin="32,0,0,0"
+                    Style="{ThemeResource TitleTextBlockStyle}"
+                    Text="Main View Content" />
+            </StackPanel>
+        </NavigationView>
     </Grid>
 </Window>
