@@ -6,6 +6,8 @@
     xmlns:local="using:WinUIApp"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:windowex="using:WinUIEx"
+    Width="1440"
+    Height="810"
     MinWidth="1024"
     MinHeight="600"
     PersistenceId="MainWindow"

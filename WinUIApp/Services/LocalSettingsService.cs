@@ -1,6 +1,4 @@
 ﻿using Microsoft.Extensions.Options;
-
-using Windows.ApplicationModel;
 using Windows.Storage;
 
 using WinUIApp.Contracts.Services;

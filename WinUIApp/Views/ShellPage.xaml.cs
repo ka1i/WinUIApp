@@ -85,4 +85,19 @@ public sealed partial class ShellPage : Page
 
         args.Handled = result;
     }
+
+    private void CtrlF_Invoked(KeyboardAccelerator sender, KeyboardAcceleratorInvokedEventArgs args)
+    {
+        controlsSearchBox.Focus(FocusState.Programmatic);
+    }
+
+    private void OnControlsSearchBoxQuerySubmitted(AutoSuggestBox sender, AutoSuggestBoxQuerySubmittedEventArgs args)
+    {
+
+    }
+
+    private void OnControlsSearchBoxTextChanged(AutoSuggestBox sender, AutoSuggestBoxTextChangedEventArgs args)
+    {
+
+    }
 }

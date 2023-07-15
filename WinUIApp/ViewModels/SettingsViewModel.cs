@@ -1,8 +1,6 @@
 ﻿using System.Reflection;
-using System.Windows.Input;
 
 using CommunityToolkit.Mvvm.ComponentModel;
-using CommunityToolkit.Mvvm.Input;
 
 using Microsoft.UI.Xaml;
 
@@ -15,37 +13,28 @@ namespace WinUIApp.ViewModels;
 
 public partial class SettingsViewModel : ObservableRecipient
 {
-    private readonly IThemeSelectorService _themeSelectorService;
+    [ObservableProperty]
+    private IThemeSelectorService _themeSelectorService;
 
     [ObservableProperty]
     private ElementTheme _elementTheme;
 
     [ObservableProperty]
-    private string _versionDescription;
+    private string _version;
 
-    public ICommand SwitchThemeCommand
-    {
-        get;
-    }
+    [ObservableProperty]
+    private string _appName;
 
     public SettingsViewModel(IThemeSelectorService themeSelectorService)
     {
+        _version = GetVersion();
+        _appName = GetAppName();
+
         _themeSelectorService = themeSelectorService;
         _elementTheme = _themeSelectorService.Theme;
-        _versionDescription = GetVersionDescription();
-
-        SwitchThemeCommand = new RelayCommand<ElementTheme>(
-            async (param) =>
-            {
-                if (ElementTheme != param)
-                {
-                    ElementTheme = param;
-                    await _themeSelectorService.SetThemeAsync(param);
-                }
-            });
     }
 
-    private static string GetVersionDescription()
+    private static string GetVersion()
     {
         Version version;
 
@@ -60,6 +49,11 @@ public partial class SettingsViewModel : ObservableRecipient
             version = Assembly.GetExecutingAssembly().GetName().Version!;
         }
 
-        return $"{"AppDisplayName".GetLocalized()} - {version.Major}.{version.Minor}.{version.Build}.{version.Revision}";
+        return $"{version.Major}.{version.Minor}.{version.Build}.{version.Revision}";
+    }
+
+    private static string GetAppName()
+    {
+        return $"{"AppDisplayName".GetLocalized()}";
     }
 }
