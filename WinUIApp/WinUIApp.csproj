@@ -15,6 +15,9 @@
 		<EnableMsixTooling>true</EnableMsixTooling>
 		<WindowsAppSDKSelfContained>true</WindowsAppSDKSelfContained>
 	</PropertyGroup>
+	<ItemGroup>
+	  <Content Remove="Assets\WindowIcon.ico" />
+	</ItemGroup>
 
 	<ItemGroup>
 		<Manifest Include="$(ApplicationManifest)" />
@@ -30,6 +33,12 @@
 
 	<ItemGroup>
 		<ProjectReference Include="..\WinUIApp.Core\WinUIApp.Core.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <EmbeddedResource Include="Assets\WindowIcon.ico">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </EmbeddedResource>
 	</ItemGroup>
 	<ItemGroup>
 		<None Update="appsettings.json">
